@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+// index.js
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+=======
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+>>>>>>> 5ce07a0 (Aggiornamento e sistemazione del progetto)
 const Employee = require("./models/Employee");
 
 const app = express();
@@ -14,6 +21,35 @@ mongoose.connect("mongodb://127.0.0.1:27017/employee", {
 });
 
 app.post('/register', async (req, res) => {
+<<<<<<< HEAD
+    try {
+      const { name, email, password } = req.body;
+  
+      // Controlla se esiste già un utente con lo stesso nome o email
+      const existingEmployee = await Employee.findOne({ $or: [{ name }, { email }] });
+      if (existingEmployee) {
+        return res.status(400).json({ message: "Nome o email già in uso." });
+      }
+  
+      // Crea un nuovo utente se non esiste già
+      const newEmployee = new Employee({ name, email, password });
+      await newEmployee.save();
+  
+      // Invia la risposta di successo
+      if(newEmployee){
+        res.status(201).json({ message: "Registrazione avvenuta con successo!", employee: newEmployee });
+
+      }
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  
+  app.listen(3001, () => {
+    console.log("Il server è avviato correttamente e in ascolto sulla porta 3001.");
+  });
+  
+=======
   try {
     const { name, email, password } = req.body;
 
@@ -40,3 +76,4 @@ app.post('/register', async (req, res) => {
 app.listen(3001, () => {
   console.log("Il server è avviato correttamente e in ascolto sulla porta 3001.");
 });
+>>>>>>> 5ce07a0 (Aggiornamento e sistemazione del progetto)
