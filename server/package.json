@@ -11,7 +11,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
+=======
     "bcrypt": "^5.1.1",
+>>>>>>> 5ce07a0 (Aggiornamento e sistemazione del progetto)
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^8.5.1",
